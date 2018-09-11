@@ -24,6 +24,3 @@ def execute():
                 db.proxies.update_one({'_id': proxy['_id']},
                                       {'$set': {'usability': proxy['usability'] + 1,
                                                 'succeed': proxy['succeed'] + 1}})
-
-
-execute()
