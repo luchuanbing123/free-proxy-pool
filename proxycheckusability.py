@@ -8,9 +8,9 @@ def execute():
         time.sleep(2)
         for proxy in db.proxies.find():
             try:
-                if not proxy['succeed']:
+                if 'succeed' not in proxy:
                     proxy['succeed'] = 0
-                if not proxy['failed']:
+                if 'failed' not in proxy:
                     proxy['failed'] = 0
 
                 requests.get(proxy['protocol'] + "://www.baidu.com",
@@ -24,3 +24,6 @@ def execute():
                 db.proxies.update_one({'_id': proxy['_id']},
                                       {'$set': {'usability': proxy['usability'] + 1,
                                                 'succeed': proxy['succeed'] + 1}})
+
+
+execute()
