@@ -11,6 +11,6 @@ def Start():
                 spider.execute()
             except Exception as msg:
                 print(msg)
-        time.sleep(60 * 5)
+        time.sleep(60)
 
 
