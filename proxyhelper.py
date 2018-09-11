@@ -1,4 +1,4 @@
-import DB as db
+import db as db
 import queue
 
 _proxies_queues = {}

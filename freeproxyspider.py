@@ -1,11 +1,11 @@
-import FreeProxySpideres
-from FreeProxySpideres import *
+import freeproxyspideres
+from freeproxyspideres import *
 import time
 
 
-def Start():
+def execute():
     while True:
-        for free_proxy_spider in FreeProxySpideres.__all__:
+        for free_proxy_spider in freeproxyspideres.__all__:
             try:
                 spider = eval(free_proxy_spider)
                 spider.execute()

@@ -1,12 +1,12 @@
 from flask import Flask, request
-import ProxyHelper
+import proxyhelper
 
 
-def Start():
+def execute():
     app = Flask(__name__)
 
     @app.route('/')
-    def hello():
+    def index():
         return 'Hello, World!'
 
     @app.route('/get')
@@ -16,7 +16,7 @@ def Start():
 
         if request.values.get('token'):
             token = request.values.get('token')
-        proxy = ProxyHelper.next(protocol, token)
+        proxy = proxyhelper.next(protocol, token)
         return proxy['proxy_addr']
 
     app.run(host='0.0.0.0', port='80')
