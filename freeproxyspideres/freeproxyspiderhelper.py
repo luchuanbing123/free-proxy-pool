@@ -15,7 +15,7 @@ headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,imag
 def get_soup(url):
     print('spider:' + url)
     headers['Host'] = urlparse(url).hostname
-    html = requests.get(url, headers=headers).text
+    html = requests.get(url, headers=headers, timeout=10).text
     return BeautifulSoup(html, 'html.parser')
 
 
