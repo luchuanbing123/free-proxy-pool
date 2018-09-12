@@ -5,8 +5,8 @@ try_add_proxies = basehelper.try_add_proxies
 
 
 def execute():
-    soup = get_soup('http://www.goubanjia.com/')
-    for tr in soup.select('#services > div > div.row > div > div > div > table > tbody > tr'):
+    soup = get_soup('https://www.sslproxies.org/')
+    for tr in soup.select('#proxylisttable tr'):
         tds = tr.select('td')
         ip = ''
         port = ''

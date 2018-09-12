@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import db as db
 from urllib.parse import urlparse
+import chardet
 
 headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
            'Accept-Encoding': 'gzip, deflate, br',
@@ -12,10 +13,10 @@ headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,imag
            }
 
 
-def get_soup(url):
+def get_soup(url, proxies=None, timeout=10):
     print('spider:' + url)
     headers['Host'] = urlparse(url).hostname
-    html = requests.get(url, headers=headers, timeout=10).text
+    html = requests.get(url, headers=headers, timeout=timeout, proxies=proxies).text
     return BeautifulSoup(html, 'html.parser')
 
 

@@ -1,7 +1,7 @@
-from freeproxyspideres import freeproxyspiderhelper
+import basehelper
 
-get_soup = freeproxyspiderhelper.get_soup
-try_add_proxies = freeproxyspiderhelper.try_add_proxies
+get_soup = basehelper.get_soup
+try_add_proxies = basehelper.try_add_proxies
 
 
 def execute():

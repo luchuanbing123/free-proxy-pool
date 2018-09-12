@@ -12,5 +12,3 @@ def execute():
             except Exception as msg:
                 print(msg)
         time.sleep(60)
-
-

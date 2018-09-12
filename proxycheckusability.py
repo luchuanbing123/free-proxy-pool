@@ -5,7 +5,6 @@ import time
 
 def execute():
     while True:
-        time.sleep(2)
         for proxy in db.proxies.find():
             try:
                 if 'succeed' not in proxy:
