@@ -5,17 +5,15 @@ try_add_proxies = basehelper.try_add_proxies
 
 
 def execute():
-    soup = get_soup('https://www.sslproxies.org/')
-    for tr in soup.select('#proxylisttable tr'):
+    soup = get_soup('https://www.sslproxies.org/', timeout=30)
+    for tr in soup.select('#proxylisttable tr')[1:-1]:
         tds = tr.select('td')
-        ip = ''
-        port = ''
-        for t in tds[0].select('*'):
-            if 'style' in t.attrs and 'none;' in t.attrs['style']:
-                continue
-            if 'class' in t.attrs and 'port' in t.attrs['class']:
-                port = t.text.strip()
-            else:
-                ip += t.text.strip()
-        protocol = tds[2].text.strip()
-        try_add_proxies({'ip': ip, 'port': port, 'protocol': protocol})
+        ip = tds[0].text
+        port = tds[1].text
+        country = tds[3].text
+        protocol = 'https' if tds[6].text == 'yes' else 'http'
+        try_add_proxies({'ip': ip,
+                         'port': port,
+                         'protocol': protocol,
+                         'country': country
+                         })

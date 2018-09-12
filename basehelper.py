@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 import chardet
 
 headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-           'Accept-Encoding': 'gzip, deflate, br',
+           'Accept-Encoding': 'gzip, deflate',
            'Accept-Language': 'zh-CN,zh;q=0.9',
            'Cache-Control': 'max-age=0',
            'Connection': 'keep-alive',
@@ -22,6 +22,10 @@ def get_soup(url, proxies=None, timeout=10):
 
 def try_add_proxies(proxy):
     proxy['usability'] = 0
+    proxy['succeed'] = 0
+    proxy['failed'] = 0
+    if 'country' not in proxy:
+        proxy['country'] = ''
     proxy['proxy_addr'] = proxy['protocol'] + '://' + proxy['ip'] + ':' + proxy['port']
     if db.proxies.find_one({'proxy_addr': proxy['proxy_addr']}) is None:
         print('add proxy:' + proxy['proxy_addr'])
