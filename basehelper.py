@@ -13,7 +13,7 @@ headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,imag
            }
 
 
-def get_soup(url, proxies=None, timeout=10):
+def get_soup(url, proxies=None, timeout=30):
     print('spider:' + url)
     headers['Host'] = urlparse(url).hostname
     req = requests.get(url, headers=headers, timeout=timeout, proxies=proxies)
