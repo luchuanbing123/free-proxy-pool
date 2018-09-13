@@ -1,5 +1,6 @@
 import db
 import telnetlib
+import time
 
 
 def execute():
@@ -15,3 +16,4 @@ def execute():
                 db.proxies.update_one({'_id': proxy['_id']},
                                       {'$set': {'usability': proxy['usability'] + 1,
                                                 'succeed': proxy['succeed'] + 1}})
+        time.sleep(60 * 30)
