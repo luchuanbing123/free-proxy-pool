@@ -1,8 +1,17 @@
-import webapi
-import freeproxyspider
-import proxycheckusability
 import threading
+import config
 
-threading.Thread(target=freeproxyspider.execute).start()
-threading.Thread(target=proxycheckusability.execute).start()
-threading.Thread(target=webapi.execute).start()
+if config.func_freeproxyspider:
+    import freeproxyspider
+
+    threading.Thread(target=freeproxyspider.execute).start()
+
+if config.func_proxycheckusability:
+    import proxycheckusability
+
+    threading.Thread(target=proxycheckusability.execute).start()
+
+if config.func_webapi:
+    import webapi
+
+    threading.Thread(target=webapi.execute).start()
