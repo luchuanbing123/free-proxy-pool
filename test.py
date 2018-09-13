@@ -1,6 +1,7 @@
-# from freeproxyspideres import  sslproxiesorg
+# import basehelper
 #
-# sslproxiesorg.execute()
-import requests
+# basehelper.get_soup('http://www.baidu,com', proxies={'http': 'http://191.252.191.30:3128'}, timeout=300)
 
-print(requests.get('http://www.baidu.com', proxies={'http': "http://202.100.83.139:80"}).text)
+
+from freeproxyspideres import  proxynovacom
+proxynovacom.execute()

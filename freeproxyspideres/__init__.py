@@ -3,7 +3,7 @@ __all__ = ['freeproxylistnet',
            'ip3366net',
            'xicidailicom',
            'sslproxiesorg',
-           'hidemyname',
+           # 'hidemyname',
            'proxylistpluscom',
-
+           'proxynovacom',
            ]

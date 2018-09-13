@@ -16,7 +16,18 @@ headers = {'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,imag
 def get_soup(url, proxies=None, timeout=10):
     print('spider:' + url)
     headers['Host'] = urlparse(url).hostname
-    html = requests.get(url, headers=headers, timeout=timeout, proxies=proxies).text
+    req = requests.get(url, headers=headers, timeout=timeout, proxies=proxies)
+    if req.encoding == 'ISO-8859-1':
+        encodings = requests.utils.get_encodings_from_content(req.text)
+        if encodings and len(encodings) > 0:
+            encoding = encodings[0]
+        elif req.apparent_encoding is not None:
+            encoding = req.apparent_encoding
+        else:
+            encoding = 'ISO-8859-1'
+        html = req.content.decode(encoding, 'replace')  # replace -> replace illegal character with ?
+    else:
+        html = req.text
     return BeautifulSoup(html, 'html.parser')
 
 

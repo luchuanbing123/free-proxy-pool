@@ -1,24 +1,16 @@
 import db
-import requests
-import time
+import telnetlib
 
 
 def execute():
     while True:
         for proxy in db.proxies.find():
             try:
-                if 'succeed' not in proxy:
-                    proxy['succeed'] = 0
-                if 'failed' not in proxy:
-                    proxy['failed'] = 0
-
-                requests.get(proxy['protocol'] + "://www.baidu.com",
-                             proxies={proxy['protocol']: proxy['proxy_addr']},
-                             timeout=5)
-            except Exception as msg:
+                telnetlib.Telnet().open(proxy['ip'], proxy['port'], timeout=2)
+            except Exception as e:
                 db.proxies.update_one({'_id': proxy['_id']},
                                       {'$set': {'usability': proxy['usability'] - 1,
-                                                'succeed': proxy['failed'] + 1}})
+                                                'failed': proxy['failed'] + 1}})
             else:
                 db.proxies.update_one({'_id': proxy['_id']},
                                       {'$set': {'usability': proxy['usability'] + 1,
