@@ -14,7 +14,7 @@ def _fetch_proxies(protocol='http', token_level=0):
     _queue = _proxies_queues[protocol_key]
     if _queue.empty():
         all_proxies = db.proxies.find({'protocol': protocol}).sort([('usability', -1)]).limit(
-            int(token_level) * 1000 + 50)
+            int(token_level) * 1000 + 100)
         for proxy in all_proxies:
             _queue.put(proxy)
 
@@ -27,8 +27,10 @@ def next(protocol, token=None):
         token_in_db = db.tokens.find_one({'token': token})
         if token_in_db:
             token_level = token_in_db['level']
-
-    return _fetch_proxies(protocol, token_level).get_nowait()
+    _proxies = _fetch_proxies(protocol, token_level)
+    proxy = _proxies.get_nowait()
+    _proxies.put(proxy)
+    return proxy
 
 
 global _proxy_count
