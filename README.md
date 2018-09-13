@@ -2,7 +2,17 @@
 
 ##  说明
     从互联网上收集免费的http / https / socket代理
-    测试地址:
+## 测试地址: 
+- 数据每天更新，无token每天100个，有token的每天1100个
+- [http://47.100.12.55:8118](http://47.100.12.55:8118)  
+
+- [http://47.100.12.55:8118/get](http://47.100.12.55:8118/get)  
+参数说明:
+    - protocol 可选参数 http/https 例如: http://47.100.12.55:8118/get?protocol=https
+    - token 可选参数 例如: http://47.100.12.55:8118/get?protocol=http&token=o47Fa0mp9SRTf3eiKmqWm69BjG_8    
+    token 的获取:关注微信公众号 <b>高效工具库(gaoxiaogongjuku)</b>
+    <img alt='微信公众号:gaoxiaogongjuku'  src='https://github.com/LuChuanBing/free-proxy-pool/blob/master/qrcode.jpg' />
+    
     
 #### 配置选项 config.ini
     [mongodb]

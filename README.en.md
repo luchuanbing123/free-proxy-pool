@@ -3,6 +3,17 @@
 ## Description
 Collect free http/https/socket proxy from internet 
 
+## test addr:
+- The data is updated daily, no tokens are 100 limit per day, and there are 1100 limit per day with tokens.
+- [http://47.100.12.55:8118](http://47.100.12.55:8118)  
+
+- [http://47.100.12.55:8118/get](http://47.100.12.55:8118/get)  
+Parameter Description:
+    - protocol Optional parameter http/https E.g: http://47.100.12.55:8118/get?protocol=https
+    - token Optional parameter E.g: http://47.100.12.55:8118/get?protocol=http&token=o47Fa0mp9SRTf3eiKmqWm69BjG_8    
+    how to get token :Pay attention to WeChat public number <b>高效工具库(gaoxiaogongjuku)</b>
+    <img alt='微信公众号:gaoxiaogongjuku'  src='https://github.com/LuChuanBing/free-proxy-pool/blob/master/qrcode.jpg' />
+    
 #### set config.ini
     [mongodb]
     host = localhost # host or ip of mongodb
