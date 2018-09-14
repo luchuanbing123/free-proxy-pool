@@ -6,5 +6,5 @@ __all__ = ['freeproxylistnet',  # https://free-proxy-list.net/
            # 'hidemyname', # todo https://hidemyna.me/en/proxy-list/
            'proxylistpluscom', # https://list.proxylistplus.com/SSL-List-{1,7}
            'proxynovacom', # https://www.proxynova.com/proxy-server-list/
-           
+           'clarketm_proxy', # https://github.com/clarketm/proxy-list/blob/master/proxy-list.txt
            ]
