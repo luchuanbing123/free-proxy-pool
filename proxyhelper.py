@@ -39,7 +39,7 @@ def get_all(protocol, token=None):
         return []
     token_in_db = db.tokens.find_one({'token': token, 'status': "active"})
     if token_in_db:
-        token_level = token_in_db['level']
+        token_level = token_in_db['token_level']
     return list(db.proxies.find({'protocol': protocol, 'succeed': {'$gt': 0}}).sort([('usability', -1)]).limit(
         int(token_level) * 1000 + 100))
 
