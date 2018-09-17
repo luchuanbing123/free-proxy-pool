@@ -33,7 +33,7 @@ def execute():
         return proxy['proxy_addr']
 
     @app.route('/get_all')
-    def get(protocol='http', token=None):
+    def get_all(protocol='http', token=None):
         if not request.values.get('token'):
             return '请先关注微信公众号   高效工具库(gaoxiaogongjuku) 获取token'
         if request.values.get('protocol') in ['http', 'https']:
