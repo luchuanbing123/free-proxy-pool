@@ -9,5 +9,5 @@ _client: MongoClient = pymongo.MongoClient(host=config.mongodb_host, port=config
 _db_proxies: Database = _client.get_database('proxies')
 proxies: Collection = _db_proxies['proxies']
 
-_db_wechat: Database = _client.get_database('proxies')
+_db_wechat: Database = _client.get_database('wechat')
 tokens: Collection = _db_wechat['tokens']
