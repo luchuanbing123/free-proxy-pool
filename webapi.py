@@ -25,7 +25,7 @@ def execute():
 
     @app.route('/get')
     def get(protocol='http', token=None):
-        if request.values.get('protocol') not in ['http', 'https']:
+        if request.values.get('protocol') in ['http', 'https']:
             protocol = request.values.get('protocol')
         if request.values.get('token'):
             token = request.values.get('token')
@@ -40,7 +40,7 @@ def execute():
             protocol = request.values.get('protocol')
         token = request.values.get('token')
         proxies = proxyhelper.get_all(protocol, token)
-        return str(map(lambda proxy: proxy['proxy_addr'], proxies))
+        return str(list(map(lambda proxy: proxy['proxy_addr'], proxies)))
 
     app.run(host=config.webapi_host, port=config.webapi_port)
 
