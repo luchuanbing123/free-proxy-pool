@@ -24,6 +24,6 @@ pytesseract==0.2.4
 requests==2.19.1
 selenium==3.14.0
 six==1.11.0
-urllib3==1.23
+urllib3==1.26.5
 Werkzeug==0.14.1
 wrapt==1.10.11
